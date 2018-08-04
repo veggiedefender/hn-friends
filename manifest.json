@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "hn-friends",
+  "version": "1.0",
+  "description": "Highlight your friends on Hacker News.",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://news.ycombinator.com/*"],
+      "js": ["utils.js", "hn-friends.js"]
+    },
+    {
+      "matches": ["https://news.ycombinator.com/user?id=*"],
+      "js": ["user.js"]
+    }
+  ]
+}
