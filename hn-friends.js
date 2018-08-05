@@ -6,13 +6,35 @@ css(`
     color: #fff !important;
     padding: 0.25em;
   }
+
+  .tag {
+    height: 0.75em;
+  }
 `);
+
+tags = {
+  'eat_veggies': 'the guy who did a thing once',
+}
+
+function addTag(user, tag) {
+  const img = document.createElement('img');
+  img.src = chrome.extension.getURL('tag.svg');
+  img.className = 'tag';
+  img.title = tag;
+  user.parentElement.insertBefore(img, user.nextSibling);
+  user.parentElement.insertBefore(document.createTextNode(' '), img);
+}
 
 loadFriends((friends) => {
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
-    if (friends.has(user.innerHTML)) {
+    const username = user.innerHTML;
+
+    if (friends.has(username)) {
       user.classList.add('friends');
+    }
+    if (username in tags) {
+      addTag(user, tags[username]);
     }
   }
 });
