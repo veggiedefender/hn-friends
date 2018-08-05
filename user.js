@@ -13,7 +13,7 @@ css(`
 
 function createButton(text, onclick) {
   const button = document.createElement('a');
-  button.classList.add('friend-toggle')
+  button.className = 'friend-toggle';
   button.appendChild(document.createTextNode(text));
   button.onclick = onclick;
   user.parentElement.appendChild(button);
