@@ -3,19 +3,17 @@ const username = user.innerHTML;
 
 const reload = window.location.reload.bind(window.location);
 
-css(`
-  .friend-toggle {
-    cursor: pointer;
-    margin-left: 1ch;
-    text-decoration: underline;
-  }
-`);
-
 function createButton(text, onclick) {
   const button = document.createElement('a');
   button.className = 'friend-toggle';
-  button.appendChild(document.createTextNode(text));
+  button.href = 'javascript:void(0)';
   button.onclick = onclick;
+
+  const underline = document.createElement('u')
+  underline.appendChild(document.createTextNode(text));
+
+  button.appendChild(underline);
+  user.parentElement.appendChild(document.createTextNode(' '));
   user.parentElement.appendChild(button);
 }
 
