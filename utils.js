@@ -4,16 +4,19 @@ function loadFriends(callback) {
   storage.get({ friends: [] }, ({ friends }) => callback(new Set(friends)));
 }
 
-function setFriends(friends, callback) {
-  storage.set({ friends: Array.from(friends) }, callback);
+function setFriends(setter, callback) {
+  loadFriends((friends) => {
+    const newFriends = setter(friends);
+    storage.set({ friends: Array.from(newFriends) }, callback);
+  });
 }
 
 function addFriend(username, callback) {
-  loadFriends(friends => setFriends(friends.add(username), callback));
+  setFriends(friends => friends.add(username), callback);
 }
 
 function removeFriend(username, callback) {
-  loadFriends(friends => setFriends(friends.delete(username), callback));
+  setFriends(friends => friends.delete(username), callback);
 }
 
 function css(styles) {
