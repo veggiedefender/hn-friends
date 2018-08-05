@@ -15,4 +15,4 @@ loadFriends((friends) => {
       user.classList.add('friends');
     }
   }
-})
+});

@@ -20,7 +20,7 @@ function removeFriend(username, callback) {
 }
 
 function css(styles) {
-  const sheet = document.createElement('style')
+  const sheet = document.createElement('style');
   sheet.innerHTML = styles;
   document.head.appendChild(sheet);
 }
