@@ -35,6 +35,7 @@ function addTagInput(tag) {
   const container = tableCell();
   const textBox = document.createElement('input');
   textBox.value = tag;
+  textBox.size = 60;
   textBox.oninput = updateTag;
   container.appendChild(textBox);
   newRow.appendChild(container);
