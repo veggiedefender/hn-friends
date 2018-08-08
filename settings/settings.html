@@ -7,16 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <div class="title">HN Friends</div>
+  <div class="container">
+    <div class="title">HN Friends</div>
 
-  <button id="import">Import data</button>
-  <input
-    id="upload"
-    type="file"
-    accept="application/json,.json"
-  >
+    <div class="buttons">
+      <button id="import">Import data</button>
+      <input
+        id="upload"
+        type="file"
+        accept="application/json,.json"
+      >
 
-  <button id="export">Export data</button>
+      <button id="export">Export data</button>
+    </div>
+
+    <p><a href="https://jse.li/">made by Jesse Li</a></p>
+    <p><a href="https://github.com/veggiedefender/hn-friends">source</a></p>
+    <p><a href="https://www.buymeacoffee.com/jesse">donate</a></p>
+  </div>
 
   <script src="../src/utils.js"></script>
   <script src="settings.js"></script>
