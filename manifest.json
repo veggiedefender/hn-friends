@@ -3,8 +3,14 @@
   "name": "hn-friends",
   "version": "1.0",
   "description": "Highlight and tag your friends on Hacker News.",
+  "icons": {
+    "48": "icons/48.png"
+  },
   "permissions": ["storage"],
-  "web_accessible_resources": ["img/tag.svg"],
+  "web_accessible_resources": [
+    "img/tag.svg",
+    "popup/popup.html"
+  ],
   "content_scripts": [
     {
       "matches": ["https://news.ycombinator.com/*"],
@@ -14,5 +20,13 @@
       "matches": ["https://news.ycombinator.com/user?id=*"],
       "js": ["src/user.js"]
     }
-  ]
+  ],
+  "browser_action": {
+    "browser_style": false,
+    "default_icon": {
+      "48": "icons/48.png"
+    },
+    "default_title": "HN Friends",
+    "default_popup": "popup/popup.html"
+  }
 }

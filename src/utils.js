@@ -5,15 +5,39 @@ const defaults = {
 };
 const data = loadData('friends', 'tags');
 
+function deserialize(data) {
+  for (let key in data) {
+    if (!(key in defaults)) {
+      delete data[key];
+    }
+  }
+
+  if ('friends' in data) {
+    data.friends = new Set(data.friends);
+  }
+}
+
+function serialize(values) {
+  if ('friends' in values) {
+    values.friends = Array.from(values.friends);
+  }
+  if ('tags' in values) {
+    for (let username in values.tags) {
+      values.tags[username] = values.tags[username].trim();
+      if (values.tags[username] === '') {
+        delete values.tags[username];
+      }
+    }
+  }
+}
+
 function loadData(...keys) {
   return new Promise((resolve, reject) => {
     const query = {};
     keys.forEach(key => query[key] = defaults[key]);
     storage.get(query, (data) => {
       if (!chrome.runtime.lastError) {
-        if ('friends' in data) {
-          data.friends = new Set(data.friends);
-        }
+        deserialize(data);
         resolve(data);
       } else {
         reject(browser.runtime.lastError);
@@ -24,17 +48,7 @@ function loadData(...keys) {
 
 function setData(values) {
   return new Promise((resolve, reject) => {
-    if ('friends' in values) {
-      values.friends = Array.from(values.friends);
-    }
-    if ('tags' in values) {
-      for (let username in values.tags) {
-        values.tags[username] = values.tags[username].trim();
-        if (values.tags[username] === '') {
-          delete values.tags[username];
-        }
-      }
-    }
+    serialize(values);
     storage.set(values, () => {
       if (!chrome.runtime.lastError) {
         resolve();

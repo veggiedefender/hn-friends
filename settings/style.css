@@ -1,0 +1,24 @@
+body {
+  background-color: #f6f6ef;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.title {
+  background-color: #ff6600;
+  font-weight: bold;
+  font-size: 10pt;
+  padding: 2px;
+}
+
+button {
+  display: block;
+  margin: 5px 0;
+}
+
+#upload {
+  display: none;
+}
+
+.error {
+  color: red;
+}
