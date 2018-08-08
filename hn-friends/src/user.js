@@ -2,6 +2,13 @@ const user = document.getElementsByClassName('hnuser')[0];
 const username = user.innerHTML;
 const tableRow = document.getElementsByClassName('athing')[0];
 
+function andReload(fn) {
+  return async () => {
+    await fn();
+    window.location.reload();
+  }
+}
+
 function addFriendToggle(text, onclick) {
   const button = document.createElement('a');
   button.className = 'friend-toggle';
@@ -17,7 +24,9 @@ function addFriendToggle(text, onclick) {
 }
 
 function updateTag(e) {
-  addTag(username, e.target.value);
+  const newTag = e.target.children[0].value;
+  andReload(() => addTag(username, newTag))();
+  e.preventDefault();
 }
 
 function tableCell() {
@@ -33,21 +42,24 @@ function addTagInput(tag) {
   newRow.appendChild(label);
 
   const container = tableCell();
-  const textBox = document.createElement('input');
-  textBox.value = tag;
-  textBox.size = 60;
-  textBox.oninput = updateTag;
-  container.appendChild(textBox);
   newRow.appendChild(container);
 
-  tableRow.parentNode.insertBefore(newRow, tableRow.nextSibling);
-}
+  const form = document.createElement('form');
+  form.onsubmit = updateTag;
+  form.style.marginBottom = '0';
+  container.appendChild(form);
 
-function andReload(fn) {
-  return async () => {
-    await fn();
-    window.location.reload();
-  }
+  const textBox = document.createElement('input');
+  textBox.value = tag;
+  form.appendChild(textBox);
+  console.log(form);
+
+  const button = document.createElement('input');
+  button.type = 'submit';
+  button.value = 'save';
+  form.appendChild(button);
+
+  tableRow.parentNode.insertBefore(newRow, tableRow.nextSibling);
 }
 
 (async () => {
