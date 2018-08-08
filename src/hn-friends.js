@@ -12,20 +12,18 @@ css(`
   }
 `);
 
-tags = {
-  'eat_veggies': 'the guy who did a thing once',
-}
-
-function addTag(user, tag) {
+function addTagElement(user, tag) {
   const img = document.createElement('img');
-  img.src = chrome.extension.getURL('tag.svg');
+  img.src = chrome.extension.getURL('img/tag.svg');
   img.className = 'tag';
   img.title = tag;
   user.parentElement.insertBefore(img, user.nextSibling);
   user.parentElement.insertBefore(document.createTextNode(' '), img);
 }
 
-loadFriends((friends) => {
+(async () => {
+  const { friends, tags } = await data;
+  console.log(tags);
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
     const username = user.innerHTML;
@@ -34,7 +32,8 @@ loadFriends((friends) => {
       user.classList.add('friends');
     }
     if (username in tags) {
-      addTag(user, tags[username]);
+      user.title = tags[username];
+      addTagElement(user, tags[username]);
     }
   }
-});
+})();
