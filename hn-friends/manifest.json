@@ -4,7 +4,9 @@
   "version": "1.0",
   "description": "Highlight and tag your friends on Hacker News.",
   "icons": {
-    "48": "icons/48.png"
+    "48": "icons/48.png",
+    "96": "icons/96.png",
+    "128": "icons/128.png"
   },
   "permissions": ["storage"],
   "web_accessible_resources": [
@@ -24,7 +26,8 @@
   "browser_action": {
     "browser_style": false,
     "default_icon": {
-      "48": "icons/48.png"
+      "48": "icons/48.png",
+      "96": "icons/96.png"
     },
     "default_title": "HN Friends",
     "default_popup": "popup/popup.html"
