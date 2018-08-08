@@ -21,6 +21,7 @@ body {
 
 button {
   display: block;
+  font-family: monospace;
   margin: 5px 0;
 }
 
