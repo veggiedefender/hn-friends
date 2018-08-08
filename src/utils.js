@@ -6,9 +6,9 @@ const defaults = {
 const data = loadData('friends', 'tags');
 
 function loadData(...keys) {
-  const query = {};
-  keys.forEach(key => query[key] = defaults[key]);
   return new Promise((resolve, reject) => {
+    const query = {};
+    keys.forEach(key => query[key] = defaults[key]);
     storage.get(query, (data) => {
       if (!chrome.runtime.lastError) {
         if ('friends' in data) {
