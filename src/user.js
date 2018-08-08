@@ -2,8 +2,6 @@ const user = document.getElementsByClassName('hnuser')[0];
 const tableRow = document.getElementsByClassName('athing')[0];
 const username = user.innerHTML;
 
-const reload = window.location.reload.bind(window.location);
-
 function createButton(text, onclick) {
   const button = document.createElement('a');
   button.className = 'friend-toggle';

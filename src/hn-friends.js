@@ -23,7 +23,6 @@ function addTagElement(user, tag) {
 
 (async () => {
   const { friends, tags } = await data;
-  console.log(tags);
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
     const username = user.innerHTML;
