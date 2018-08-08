@@ -19,3 +19,6 @@ Highlight and tag your friends on Hacker News.
 ![profile](screenshots/profile.png)
 ![thread](screenshots/thread.png)
 ![options](screenshots/options.png)
+
+## Contributing
+PRs are welcome. Feel free to file an issue if you found a bug or want a feature added. Claim an issue by commenting on it if you want to implement it.
