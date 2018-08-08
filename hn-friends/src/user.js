@@ -23,12 +23,6 @@ function addFriendToggle(text, onclick) {
   user.parentElement.appendChild(button);
 }
 
-function updateTag(e) {
-  const newTag = e.target.children[0].value;
-  andReload(() => addTag(username, newTag))();
-  e.preventDefault();
-}
-
 function tableCell() {
   const cell = document.createElement('td');
   cell.style.verticalAlign = 'top';
@@ -42,22 +36,23 @@ function addTagInput(tag) {
   newRow.appendChild(label);
 
   const container = tableCell();
-  newRow.appendChild(container);
 
   const form = document.createElement('form');
-  form.onsubmit = updateTag;
-  form.style.marginBottom = '0';
-  container.appendChild(form);
+  form.style.marginBottom = 0;
 
   const textBox = document.createElement('input');
   textBox.value = tag;
   form.appendChild(textBox);
-  console.log(form);
 
   const button = document.createElement('input');
   button.type = 'submit';
   button.value = 'save';
   form.appendChild(button);
+
+  form.onsubmit = andReload(() => addTag(username, textBox.value));
+  container.appendChild(form);
+
+  newRow.appendChild(container);
 
   tableRow.parentNode.insertBefore(newRow, tableRow.nextSibling);
 }
