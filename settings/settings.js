@@ -15,10 +15,20 @@ function showError(err) {
   elem.className = 'error';
 }
 
+function download(data) {
+  const elem = document.createElement('a');
+  elem.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
+  elem.download = 'hn-friends.json';
+  elem.style.display = 'none';
+  document.body.appendChild(elem);
+  elem.click();
+  document.body.removeChild(element);
+}
+
 exportBtn.onclick = async function() {
   const data = await loadData('friends', 'tags');
   serialize(data);
-  window.location.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
+  download(data);
 }
 
 importBtn.onclick = async function() {
