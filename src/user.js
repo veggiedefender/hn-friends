@@ -1,6 +1,6 @@
 const user = document.getElementsByClassName('hnuser')[0];
-const tableRow = document.getElementsByClassName('athing')[0];
 const username = user.innerHTML;
+const tableRow = document.getElementsByClassName('athing')[0];
 
 function addFriendToggle(text, onclick) {
   const button = document.createElement('a');
