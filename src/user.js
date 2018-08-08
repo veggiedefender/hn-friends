@@ -2,7 +2,7 @@ const user = document.getElementsByClassName('hnuser')[0];
 const tableRow = document.getElementsByClassName('athing')[0];
 const username = user.innerHTML;
 
-function createButton(text, onclick) {
+function addFriendToggle(text, onclick) {
   const button = document.createElement('a');
   button.className = 'friend-toggle';
   button.href = 'javascript:void(0)';
@@ -52,9 +52,9 @@ function andReload(fn) {
 (async () => {
   const { friends, tags } = await data;
   if (friends.has(username)) {
-    createButton('(remove friend)', andReload(() => removeFriend(username)));
+    addFriendToggle('(remove friend)', andReload(() => removeFriend(username)));
   } else {
-    createButton('(add friend)', andReload(() => addFriend(username)));
+    addFriendToggle('(add friend)', andReload(() => addFriend(username)));
   }
   addTagInput(tags[username] || '');
 })();
