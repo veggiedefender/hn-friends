@@ -1,5 +1,4 @@
-var createData = {
+chrome.tabs.create({
   url: "/settings/settings.html"
-};
-var creating = browser.tabs.create(createData);
+});
 window.close();
