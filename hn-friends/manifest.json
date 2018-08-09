@@ -10,8 +10,7 @@
   },
   "permissions": ["storage"],
   "web_accessible_resources": [
-    "img/tag.svg",
-    "popup/popup.html"
+    "img/tag.svg"
   ],
   "content_scripts": [
     {
