@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "hn-friends",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Highlight and tag your friends on Hacker News.",
   "icons": {
     "48": "icons/48.png",
