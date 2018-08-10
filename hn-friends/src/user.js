@@ -16,7 +16,7 @@ function addFriendToggle(text, onclick) {
   button.onclick = onclick;
 
   const underline = document.createElement('u')
-  underline.appendChild(document.createTextNode(text));
+  underline.textContent = text;
 
   button.appendChild(underline);
   user.parentElement.appendChild(document.createTextNode(' '));
@@ -32,7 +32,7 @@ function addTagInput(tag) {
   const newRow = document.createElement('tr');
 
   const label = tableCell();
-  label.appendChild(document.createTextNode('tag:'));
+  label.textContent = 'tag:';
   newRow.appendChild(label);
 
   const container = tableCell();
