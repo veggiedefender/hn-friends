@@ -15,6 +15,12 @@ function showError(err) {
   elem.className = 'error';
 }
 
+function getStats(data) {
+  const numFriends = data.friends.length;
+  const numTags = Object.keys(data.tags).length;
+  return { numFriends, numTags };
+}
+
 function download(data) {
   const elem = document.createElement('a');
   elem.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
@@ -29,6 +35,9 @@ exportBtn.onclick = async function() {
   const data = await loadData('friends', 'tags');
   serialize(data);
   download(data);
+
+  const { numFriends, numTags } = getStats(data);
+  showMessage(`exported ${numFriends} friends and ${numTags} tags.`);
 }
 
 importBtn.onclick = async function() {
@@ -44,8 +53,7 @@ upload.onchange = function(changeEvent) {
       deserialize(data);
       await setData(data);
 
-      const numFriends = data.friends.length;
-      const numTags = Object.keys(data.tags).length;
+      const { numFriends, numTags } = getStats(data);
       showMessage(`imported ${numFriends} friends and ${numTags} tags.`);
     } catch (err) {
       showError(err);
