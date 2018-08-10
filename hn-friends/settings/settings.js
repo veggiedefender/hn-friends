@@ -5,7 +5,7 @@ const fileUpload = document.getElementById('upload');
 function showMessage(message) {
   const elem = document.createElement('p');
   elem.className = 'message';
-  elem.appendChild(document.createTextNode(message));
+  elem.textContent = message;
   document.body.appendChild(elem);
   return elem;
 }
@@ -22,7 +22,7 @@ function download(data) {
   elem.style.display = 'none';
   document.body.appendChild(elem);
   elem.click();
-  document.body.removeChild(element);
+  document.body.removeChild(elem);
 }
 
 exportBtn.onclick = async function() {
@@ -45,7 +45,7 @@ upload.onchange = function(changeEvent) {
       await setData(data);
 
       const numFriends = data.friends.length;
-      const numTags = Object.keys(data).length;
+      const numTags = Object.keys(data.tags).length;
       showMessage(`imported ${numFriends} friends and ${numTags} tags.`);
     } catch (err) {
       showError(err);
