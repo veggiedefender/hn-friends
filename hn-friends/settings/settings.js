@@ -1,3 +1,4 @@
+const container = document.getElementById('container');
 const exportBtn = document.getElementById('export');
 const importBtn = document.getElementById('import');
 const fileUpload = document.getElementById('upload');
@@ -6,13 +7,13 @@ function showMessage(message) {
   const elem = document.createElement('p');
   elem.className = 'message';
   elem.textContent = message;
-  document.body.appendChild(elem);
+  container.appendChild(elem);
   return elem;
 }
 
 function showError(err) {
   const elem = showMessage(err);
-  elem.className = 'error';
+  elem.classList.add('error');
 }
 
 function getStats(data) {

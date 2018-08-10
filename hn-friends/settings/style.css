@@ -38,6 +38,10 @@ a {
   display: none;
 }
 
+.message {
+  margin: 0.5em 0;
+}
+
 .error {
   color: red;
 }
